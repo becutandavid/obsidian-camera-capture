@@ -20,7 +20,7 @@ export function extensionForMime(mime: string): string {
 }
 
 export function resolveTargetPath(folderOverride: string, filename: string): string | null {
-	const folder = folderOverride.split("/").map((s) => s.trim()).filter(Boolean).join("/");
+	const folder = folderOverride.split(/[\\/]/).map((s) => s.trim()).filter(Boolean).join("/");
 	return folder ? `${folder}/${filename}` : null;
 }
 

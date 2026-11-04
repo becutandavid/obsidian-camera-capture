@@ -160,6 +160,26 @@ const cases = [
 		},
 	],
 	[
+		"note switched during capture",
+		async (page) => {
+			const before = await page.evaluate(async () => {
+				await app.vault.create("Other.md", "other note\n");
+				const editor = app.workspace.activeEditor.editor;
+				editor.focus();
+				app.commands.executeCommandById("camera-capture:take-picture");
+				return editor.getValue();
+			});
+			await page.locator(".camera-capture-modal").waitFor();
+			await page.evaluate(() => app.workspace.getLeaf(false).openFile(app.vault.getAbstractFileByPath("Other.md")));
+			await captureAndInsert(page);
+			const other = await page.evaluate(() => app.workspace.activeEditor.editor.getValue());
+			if (other !== "other note\n") throw new Error(`Embed went into the wrong note: ${JSON.stringify(other)}`);
+			await page.evaluate(() => app.workspace.getLeaf(false).openFile(app.vault.getAbstractFileByPath("Note.md")));
+			await sleep(300);
+			if ((await editorValue(page)) !== before) throw new Error("Original note changed after switching away");
+		},
+	],
+	[
 		"Esc closes, no live tracks",
 		async (page) => {
 			const before = await editorValue(page);

@@ -7,7 +7,8 @@ Cases:
 1. Right-click mid-line → Take a picture → Capture → Insert. The embed lands at the exact cursor column, and the file goes to Obsidian's attachment location.
 2. Right-click on a selection. The selected text is kept and one embed is added.
 3. Photo folder set to `A/B` (doesn't exist yet), triggered from the command. The photo lands in `A/B` and is linked.
-4. Open the window, then press Esc immediately. Every camera track ends and the note is unchanged.
+4. Another note is opened in the same tab while the camera window is up. The photo is saved, but neither note is edited.
+5. Open the window, then press Esc immediately. Every camera track ends and the note is unchanged.
 
 `.e2e/modal.png` is a screenshot of the review step with a real webcam frame.
 

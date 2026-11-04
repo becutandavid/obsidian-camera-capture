@@ -1,4 +1,4 @@
-import { Editor, Notice, Platform, Plugin, TFile } from "obsidian";
+import { Editor, MarkdownView, Notice, Platform, Plugin, TFile } from "obsidian";
 import { captureViaWebcam } from "./capture/desktop";
 import { captureViaNativeCamera } from "./capture/mobile";
 import { insertLink, savePhoto } from "./insert";
@@ -48,6 +48,14 @@ export default class CameraCapturePlugin extends Plugin {
 			saved = await savePhoto(this.app, this.settings, blob, file);
 		} catch (err) {
 			new Notice(`Couldn't save photo: ${errorMessage(err)}`);
+			return;
+		}
+
+		const view = this.app.workspace.getActiveViewOfType(MarkdownView);
+		const sameNote = view?.file === file && view.editor === editor;
+		const cursorValid = cursor.line <= editor.lastLine() && cursor.ch <= editor.getLine(cursor.line).length;
+		if (!sameNote || !cursorValid) {
+			new Notice(`Photo saved to ${saved.path}. The note changed during capture, so it wasn't inserted.`);
 			return;
 		}
 

@@ -32,6 +32,10 @@ describe("resolveTargetPath", () => {
 		expect(resolveTargetPath("/Camera/", "a.jpg")).toBe("Camera/a.jpg");
 		expect(resolveTargetPath("A//B/", "a.jpg")).toBe("A/B/a.jpg");
 	});
+
+	it("treats Windows backslashes as folder separators", () => {
+		expect(resolveTargetPath("Camera\\Phone\\", "a.jpg")).toBe("Camera/Phone/a.jpg");
+	});
 });
 
 describe("dedupePath", () => {
