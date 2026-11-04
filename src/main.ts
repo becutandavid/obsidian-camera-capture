@@ -1,4 +1,5 @@
 import { Editor, Notice, Platform, Plugin, TFile } from "obsidian";
+import { captureViaWebcam } from "./capture/desktop";
 import { captureViaNativeCamera } from "./capture/mobile";
 import { insertLink, savePhoto } from "./insert";
 import { CameraCaptureSettingTab, CameraCaptureSettings, DEFAULT_SETTINGS } from "./settings";
@@ -37,7 +38,9 @@ export default class CameraCapturePlugin extends Plugin {
 
 	async takePicture(editor: Editor, file: TFile): Promise<void> {
 		const cursor = editor.getCursor();
-		const blob = Platform.isMobileApp ? await captureViaNativeCamera() : await captureViaNativeCamera();
+		const blob = Platform.isMobileApp
+			? await captureViaNativeCamera()
+			: await captureViaWebcam(this.app, this.settings.jpegQuality);
 		if (!blob) return;
 
 		let saved: TFile;
