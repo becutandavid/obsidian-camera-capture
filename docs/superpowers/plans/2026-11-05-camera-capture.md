@@ -18,7 +18,7 @@
 - Settings: `{ folderOverride: string; jpegQuality: number }`, defaults `""` and `0.9`.
 - Desktop encodes JPEG with `canvas.toBlob(cb, "image/jpeg", jpegQuality)`. Mobile blobs are saved unchanged.
 - No imports from `obsidian` in `src/naming.ts` (it must run under vitest).
-- **Commits are skipped for now.** Git has no author identity configured, and the user asked not to commit yet. Treat every "Commit" step as "stage the files" (`git add …`).
+- **Commit locally only, never push.** Each "Stage the files" step means `git add` the task's files and make a local commit.
 - E2E artifacts (test vault, Electron user-data dir, screenshots) live under `.e2e/`, which is git-ignored. Never touch the user's real Obsidian config or vaults.
 
 ## Review Focus
