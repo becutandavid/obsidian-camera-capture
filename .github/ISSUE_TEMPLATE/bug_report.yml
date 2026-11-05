@@ -1,0 +1,73 @@
+name: Bug report
+description: Something doesn't work as expected.
+labels: [bug]
+body:
+    - type: markdown
+      attributes:
+          value: Thanks for reporting! Please check [existing issues](https://github.com/becutandavid/obsidian-camera-capture/issues) first.
+    - type: textarea
+      id: what-happened
+      attributes:
+          label: What happened?
+          description: What did you do, what did you expect, and what happened instead?
+      validations:
+          required: true
+    - type: textarea
+      id: steps
+      attributes:
+          label: Steps to reproduce
+          placeholder: |
+              1. Right-click in a note
+              2. Choose "Take a picture"
+              3. ...
+      validations:
+          required: true
+    - type: dropdown
+      id: platform
+      attributes:
+          label: Platform
+          options:
+              - Windows
+              - macOS
+              - Linux
+              - Android
+              - iOS / iPadOS
+      validations:
+          required: true
+    - type: input
+      id: device
+      attributes:
+          label: Device and OS version
+          placeholder: e.g. Pixel 8, Android 15 / MacBook Air M2, macOS 15.1
+    - type: input
+      id: obsidian-version
+      attributes:
+          label: Obsidian version
+          description: Settings → General → App
+          placeholder: e.g. 1.15.0
+      validations:
+          required: true
+    - type: input
+      id: plugin-version
+      attributes:
+          label: Camera Capture version
+          placeholder: e.g. 0.1.0
+      validations:
+          required: true
+    - type: dropdown
+      id: install
+      attributes:
+          label: How is Obsidian installed?
+          description: Only relevant on Linux, where sandboxed installs can block the camera.
+          options:
+              - Not Linux
+              - AppImage
+              - Flatpak
+              - Snap
+              - .deb / .rpm / other package
+    - type: textarea
+      id: console
+      attributes:
+          label: Console errors
+          description: Desktop only. Open the developer console (Ctrl+Shift+I / Cmd+Option+I), reproduce the problem, and paste any red errors.
+          render: text

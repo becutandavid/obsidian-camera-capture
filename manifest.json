@@ -3,7 +3,8 @@
 	"name": "Camera Capture",
 	"version": "0.1.0",
 	"minAppVersion": "1.5.7",
-	"description": "Take a picture with your camera from the editor's right-click menu and embed it at the cursor.",
+	"description": "Take a photo with your device's camera from the editor menu and embed it at the cursor.",
 	"author": "David Galevski",
+	"authorUrl": "https://github.com/becutandavid",
 	"isDesktopOnly": false
 }
