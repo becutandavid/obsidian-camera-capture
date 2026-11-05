@@ -7,6 +7,10 @@
 	border-radius: var(--radius-m);
 }
 
+.camera-capture-input {
+	display: none;
+}
+
 .camera-capture-error {
 	padding: var(--size-4-4);
 	color: var(--text-error);

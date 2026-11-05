@@ -81,22 +81,24 @@ class CameraModal extends Modal {
 			);
 		});
 
-		navigator.mediaDevices
-			.getUserMedia({ video: true, audio: false })
-			.then((stream) => {
-				if (this.closed) {
-					stream.getTracks().forEach((t) => t.stop());
-					return;
-				}
-				this.stream = stream;
-				video.srcObject = stream;
-			})
-			.catch((err) => {
-				if (this.closed) return;
-				video.hide();
-				errorEl.setText(cameraErrorMessage(err));
-				errorEl.show();
-			});
+		void this.startCamera(video, errorEl);
+	}
+
+	private async startCamera(video: HTMLVideoElement, errorEl: HTMLElement): Promise<void> {
+		try {
+			const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+			if (this.closed) {
+				stream.getTracks().forEach((t) => t.stop());
+				return;
+			}
+			this.stream = stream;
+			video.srcObject = stream;
+		} catch (err) {
+			if (this.closed) return;
+			video.hide();
+			errorEl.setText(cameraErrorMessage(err));
+			errorEl.show();
+		}
 	}
 
 	onClose(): void {
