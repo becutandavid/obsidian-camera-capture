@@ -1,6 +1,6 @@
 {
 	"name": "camera-capture",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Take a photo with your device's camera from the editor menu and embed it at the cursor.",
 	"main": "main.js",
 	"type": "module",

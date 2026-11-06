@@ -1,7 +1,7 @@
 {
 	"id": "camera-capture",
 	"name": "Camera Capture",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"minAppVersion": "1.5.7",
 	"description": "Take a photo with your device's camera from the editor menu and embed it at the cursor.",
 	"author": "David Galevski",
