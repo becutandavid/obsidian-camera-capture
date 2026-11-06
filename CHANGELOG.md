@@ -4,6 +4,12 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [0.1.1]
+
+### Changed
+
+- Build: use Node's built-in `node:module` list instead of the `builtin-modules` package (flagged by the community directory review). No change to the plugin itself.
+
 ## [0.1.0]
 
 First release.
@@ -18,5 +24,6 @@ First release.
 - JPEG quality setting for desktop captures.
 - Settings appear in Obsidian's settings search on 1.13 and later.
 
-[Unreleased]: https://github.com/becutandavid/obsidian-camera-capture/compare/0.1.0...HEAD
+[Unreleased]: https://github.com/becutandavid/obsidian-camera-capture/compare/0.1.1...HEAD
+[0.1.1]: https://github.com/becutandavid/obsidian-camera-capture/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/becutandavid/obsidian-camera-capture/releases/tag/0.1.0
